@@ -1,3 +1,5 @@
+# 셀레니움에서 기본적으로 웹 드라이버를 여는 방법을 학습하는 파일
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 

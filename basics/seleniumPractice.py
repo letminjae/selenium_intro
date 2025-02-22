@@ -1,4 +1,4 @@
-# 240625
+# 네이버 검색창에 "인공지능" 입력 후 검색
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
