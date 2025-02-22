@@ -15,7 +15,7 @@
 
 ## 📂 폴더 구조  
 ```plaintext
-📦 selenium
+📦 selenium_intro
  ┣ 📂 basics            # Selenium 기본 개념 및 예제
  ┣ 📂 automation        # 웹 자동화 관련 코드
  ┣ 📂 ui-testing       # UI 테스트 코드
@@ -26,7 +26,7 @@
 ## 📌 설치 및 실행 방법  
 1. 저장소 클론  
    ```bash
-   git clone https://github.com/letminjae/selenium.git
+   git clone https://github.com/letminjae/selenium_intro.git
    ```
 2. 가상환경 생성 및 활성화 (선택)  
    ```bash
