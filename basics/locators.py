@@ -18,5 +18,17 @@ driver.get("https://rahulshettyacademy.com/angularpractice/")
 #By는 selenium.webdriver.common.by에 정의되어 있음
 driver.find_element(By.NAME, "email").send_keys("hello@hello.com") # By.NAME을 이용하여 요소를 지정
 driver.find_element(By.ID, "exampleInputPassword1").send_keys("123456") # By.ID를 이용하여 요소를 지정
+
+# CSS Selector를 이용하여 요소를 지정하는 방법
+# tagname[attribute='value'] 로 지정
+# 또는 "find_elements"로 여러개 요소중 하나를 지정해서 사용할 수도있다.
+# elements = driver.find_elements(By.CSS_SELECTOR, "input.form-control") # find_elements를 이용하여 여러개 요소를 지정
+# elements[0].send_keys("hello")
 driver.find_element(By.CSS_SELECTOR, "input[name='name']").send_keys("hello") # By.CSS_SELECTOR를 이용하여 요소를 지정
 driver.find_element(By.ID, "exampleCheck1").click()
+
+# Xpath를 이용하여 요소를 지정하는 방법
+# //tagname[@attribute='value'] 로 지정
+driver.find_element(By.XPATH, "//input[@type='submit']").click() # By.XPATH를 이용하여 요소를 지정
+message = driver.find_element(By.CLASS_NAME, "alert-success").text # By.CLASS_NAME을 이용하여 요소를 지정 - 여러개 클래스 네임이 있을경우 아무거나 가능
+print(message)
