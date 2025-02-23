@@ -17,6 +17,7 @@
 ```plaintext
 📦 selenium_intro
  ┣ 📂 basics            # Selenium 기본 개념 및 예제
+ ┣ 📂 homework          # 실생활에서 사용해볼만한 Selenium 코드 연습
  ┣ 📂 automation        # 웹 자동화 관련 코드
  ┣ 📂 ui-testing       # UI 테스트 코드
  ┣ 📜 requirements.txt # 필요 라이브러리 목록
