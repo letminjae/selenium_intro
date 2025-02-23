@@ -3,6 +3,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.select import Select
+import time
 
 chrome_options = Options()
 chrome_options.add_argument("--start-maximized") # 크롬창 최대
@@ -26,6 +28,13 @@ driver.find_element(By.ID, "exampleInputPassword1").send_keys("123456") # By.ID�
 # elements[0].send_keys("hello")
 driver.find_element(By.CSS_SELECTOR, "input[name='name']").send_keys("hello") # By.CSS_SELECTOR를 이용하여 요소를 지정
 driver.find_element(By.ID, "exampleCheck1").click()
+
+# 드롭다운 - Select를 사용한다
+dropdown = Select(driver.find_element(By.ID, "exampleFormControlSelect1"))
+dropdown.select_by_visible_text("Female") # Female 선택 후
+# dropdown.select_by_index(1) # Femail 선택
+time.sleep(1)
+dropdown.select_by_index(0) # Mail 선택
 
 # Xpath를 이용하여 요소를 지정하는 방법
 # //tagname[@attribute='value'] 로 지정
