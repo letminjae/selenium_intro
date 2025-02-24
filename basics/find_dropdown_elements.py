@@ -21,3 +21,7 @@ for country in countries:
     if country.text == "India":
         country.click()
         break
+
+# 동적 요소가 제대로 선택되었는지 - get_attribute("value")로 확인
+# print(driver.find_element(By.ID, "autosuggest").get_attribute("value"))
+assert driver.find_element(By.ID, "autosuggest").get_attribute("value") == "India"
