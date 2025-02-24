@@ -3,6 +3,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+import time
 
 chrome_options = Options()
 chrome_options.add_argument("--start-maximized") # 크롬창 최대
@@ -28,3 +29,14 @@ assert radio_buttons[2].is_selected()
 assert driver.find_element(By.ID, "displayed-text").is_displayed()
 driver.find_element(By.ID, "hide-textbox").click()
 assert not driver.find_element(By.ID, "displayed-text").is_displayed()
+
+# 4. 자바스크립트 경고창
+driver.find_element(By.CSS_SELECTOR, "#name").send_keys("Minjae")
+driver.find_element(By.ID, "alertbtn").click()
+# driver.switch_to : 드라이버(크롬창)에 대한 alert, iframe, window 등을 제어할 수 있음
+alert = driver.switch_to.alert
+alert_text = alert.text
+print(alert_text)
+assert "Minjae" in alert_text
+time.sleep(2)
+alert.accept() # 확인 버튼
