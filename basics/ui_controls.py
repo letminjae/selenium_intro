@@ -19,4 +19,12 @@ for checkbox in checkboxes:
         assert checkbox.is_selected()
         break
 
+# 2. 라디오버튼
+radio_buttons = driver.find_elements(By.CSS_SELECTOR, ".radioButton")
+radio_buttons[2].click()
+assert radio_buttons[2].is_selected()
 
+# 3. hide-show
+assert driver.find_element(By.ID, "displayed-text").is_displayed()
+driver.find_element(By.ID, "hide-textbox").click()
+assert not driver.find_element(By.ID, "displayed-text").is_displayed()
