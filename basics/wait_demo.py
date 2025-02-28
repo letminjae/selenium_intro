@@ -20,10 +20,16 @@ driver.implicitly_wait(2) # 암시적 대기 - 전체 페이지 로딩 시간을
 driver.find_element(By.CSS_SELECTOR, ".search-keyword").send_keys("ber")
 time.sleep(2)
 results = driver.find_elements(By.XPATH, "//div[@class='products']/div")
-print(len(results))
+print("result len is ", len(results))
+
+expected_text = ["Cucumber - 1 Kg", "Raspberry - 1/4 Kg", "Strawberry - 1/4 Kg"]
+actual_text = []
 
 for result in results:
+  actual_text.append(result.find_element(By.XPATH, "h4").text)
   result.find_element(By.XPATH, "div/button").click()
+
+assert expected_text == actual_text
 
 # 장바구니
 driver.find_element(By.CSS_SELECTOR, "img[alt='Cart']").click()
@@ -34,7 +40,7 @@ prices = driver.find_elements(By.CSS_SELECTOR, "tr td:nth-child(5) p")
 sum = 0
 for price in prices:
   sum += int(price.text)
-print(sum)
+print("sum is ", sum)
 totalAmount = int(driver.find_element(By.CSS_SELECTOR, ".totAmt").text)
 assert sum == totalAmount
 
