@@ -29,6 +29,7 @@ for result in results:
   actual_text.append(result.find_element(By.XPATH, "h4").text)
   result.find_element(By.XPATH, "div/button").click()
 
+# 검색 결과가 맞는지 확인
 assert expected_text == actual_text
 
 # 장바구니
@@ -42,6 +43,8 @@ for price in prices:
   sum += int(price.text)
 print("sum is ", sum)
 totalAmount = int(driver.find_element(By.CSS_SELECTOR, ".totAmt").text)
+
+# 총합이 맞는지 확인
 assert sum == totalAmount
 
 driver.find_element(By.CSS_SELECTOR, ".promoCode").send_keys("rahulshettyacademy")
@@ -49,6 +52,11 @@ driver.find_element(By.CSS_SELECTOR, ".promoBtn").click()
 
 wait = WebDriverWait(driver, 10) # 명시적 대기 - n초 동안 명시적으로 설정된 시간만큼 기다림
 wait.until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, ".promoInfo"))) # 페이지에 expected_conditions가 나타날 때까지 기다림
-
 print(driver.find_element(By.CLASS_NAME, "promoInfo").text)
+
+discounted_amount = float(driver.find_element(By.CSS_SELECTOR, ".discountAmt").text)
+
+# 할인된 금액이 총합보다 작은지 확인
+assert totalAmount > discounted_amount
+
 driver.find_element(By.XPATH, "//button[text()='Place Order']").click()
