@@ -1,6 +1,6 @@
 # angularpractice 페이지 E2E 테스트
 
-# Shop 진입 > 블랙베리 상품을 추가 > 
+# Shop 진입 > 블랙베리 상품을 추가 > Checkout으로 이동 > 
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -18,9 +18,16 @@ driver.get("https://rahulshettyacademy.com/angularpractice/")
 # driver.find_element(By.LINK_TEXT, "Shop").click()
 driver.find_element(By.CSS_SELECTOR, "a[href*='shop']").click() # a[href*='shop'] : shop이 포함된 a태그
 
+# 블랙베리 카드 찾아 장바구니에 추가
 cards = driver.find_elements(By.XPATH, "//div[@class='card h-100']")
 for card in cards:
   card_name = card.find_element(By.XPATH, "div/h4/a").text
   if card_name == "Blackberry":
     card.find_element(By.XPATH, "div/button").click()
     break
+
+# Checkout으로 이동
+driver.find_element(By.CSS_SELECTOR, "a[class*='nav-link btn btn-primary']").click() # a[class*='nav-link btn btn-primary'] : nav-link, btn, btn-primary가 포함된 a태그
+# driver.find_element(By.XPATH, "//div[@id='navbarResponsive']/ul/li/a").click()
+
+
