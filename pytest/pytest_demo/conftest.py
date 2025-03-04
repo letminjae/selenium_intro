@@ -7,3 +7,8 @@ def setup():
     print("픽스쳐 셋업..")
     yield
     print("저는 yield 때문에 마지막에 실행돼요")
+
+@pytest.fixture()
+def dataLoad():
+    print("데이터 로드 중...")
+    return ["김씨", "박씨", "이씨"]
