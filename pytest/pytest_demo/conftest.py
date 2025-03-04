@@ -12,3 +12,10 @@ def setup():
 def dataLoad():
     print("데이터 로드 중...")
     return ["김씨", "박씨", "이씨"]
+
+# test_demo1.py에 테스트 적용
+# 여러 브라우저를 테스트할 때 사용
+@pytest.fixture(params=["chrome", "firefox"])
+def crossBrowser(request):
+    print("크로스 브라우저 실행")
+    return request.param

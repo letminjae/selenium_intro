@@ -22,3 +22,6 @@ def test_secondProgram():
 
 def test_thirdProgram():
     print("Good Night")
+
+def test_crossBrowser(crossBrowser):
+    print(crossBrowser)
