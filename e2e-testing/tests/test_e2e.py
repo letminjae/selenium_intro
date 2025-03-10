@@ -4,20 +4,25 @@ from utilities.base_class import BaseClass
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-from page_objects.Homepage import Homepage
+from page_objects.HomePage import Homepage
+from page_objects.CheckoutPage import CheckoutPage
 
 class TestOne(BaseClass):
 
   def test_E2E(self):
     homepage = Homepage(self.driver)
+    checkoutPage = CheckoutPage(self.driver)
+
     homepage.shopItems().click()
 
     # 블랙베리 카드 찾아 장바구니에 추가
-    cards = self.driver.find_elements(By.XPATH, "//div[@class='card h-100']")
+    cards = checkoutPage.getCardTitles()
+    i = -1
     for card in cards:
-      card_name = card.find_element(By.XPATH, "div/h4/a").text
+      i = i + 1
+      card_name = card.text
       if card_name == "Blackberry":
-        card.find_element(By.XPATH, "div/button").click()
+        checkoutPage.getCardFooter()[i].click()
         break
       
     # Checkout 클릭

@@ -1,3 +1,5 @@
+# 홈페이지 관련 요소 클래스
+
 from selenium.webdriver.common.by import By
 
 class Homepage:
