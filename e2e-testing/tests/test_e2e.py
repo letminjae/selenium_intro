@@ -31,10 +31,10 @@ class TestOne(BaseClass):
     confirmPage = checkoutPage.getCheckoutButtonSuccess()
 
     # Country 입력
-    self.driver.find_element(By.ID, "country").send_keys("ind")
+    confirmPage.findCountries()
     wait = WebDriverWait(self.driver, 10)
     wait.until(expected_conditions.presence_of_element_located((By.LINK_TEXT, "India")))
-    self.driver.find_element(By.LINK_TEXT, "India").click()
+    confirmPage.getIndiaOption().click()
 
     # 약관 동의
     confirmPage.getConfirmButton().click()
