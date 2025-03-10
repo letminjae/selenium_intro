@@ -4,11 +4,13 @@ from utilities.base_class import BaseClass
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+from page_objects.Homepage import Homepage
 
 class TestOne(BaseClass):
 
   def test_E2E(self):
-    self.driver.find_element(By.CSS_SELECTOR, "a[href*='shop']").click() # a[href*='shop'] : shop이 포함된 a태그
+    homepage = Homepage(self.driver)
+    homepage.shopItems().click()
 
     # 블랙베리 카드 찾아 장바구니에 추가
     cards = self.driver.find_elements(By.XPATH, "//div[@class='card h-100']")
