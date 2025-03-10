@@ -5,17 +5,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from page_objects.HomePage import Homepage
-from page_objects.CheckoutPage import CheckoutPage
-from page_objects.ConfirmPage import ConfirmPage
 
 class TestOne(BaseClass):
 
   def test_E2E(self):
     homepage = Homepage(self.driver)
-    checkoutPage = CheckoutPage(self.driver)
-    confirmPage = ConfirmPage(self.driver)
 
-    homepage.shopItems().click()
+    # shopItems 에서 checkout page 리턴됨
+    checkoutPage = homepage.shopItems()
 
     # 블랙베리 카드 찾아 장바구니에 추가
     cards = checkoutPage.getCardTitles()
@@ -30,8 +27,8 @@ class TestOne(BaseClass):
     # Checkout 클릭
     checkoutPage.getCheckoutButton().click()
 
-    # Checkout 페이지 이동
-    checkoutPage.getCheckoutButtonSuccess().click()
+    # getCheckoutButtonSuccess()에서 Confirm Page 리턴됨
+    confirmPage = checkoutPage.getCheckoutButtonSuccess()
 
     # Country 입력
     self.driver.find_element(By.ID, "country").send_keys("ind")

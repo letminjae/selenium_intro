@@ -1,6 +1,7 @@
 # 체크아웃 페이지 관련 요소 클래스
 
 from selenium.webdriver.common.by import By
+from page_objects.ConfirmPage import ConfirmPage
 
 class CheckoutPage:
 
@@ -22,4 +23,6 @@ class CheckoutPage:
     return self.driver.find_element(*CheckoutPage.checkoutBtn)
   
   def getCheckoutButtonSuccess(self):
-    return self.driver.find_element(*CheckoutPage.checkoutBtnSuccess)
+    self.driver.find_element(*CheckoutPage.checkoutBtnSuccess).click()
+    confirmPage = ConfirmPage(self.driver)
+    return confirmPage
