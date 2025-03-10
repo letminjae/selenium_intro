@@ -26,10 +26,10 @@ class TestOne(BaseClass):
         break
       
     # Checkout 클릭
-    self.driver.find_element(By.CSS_SELECTOR, "a[class*='nav-link btn btn-primary']").click() # a[class*='nav-link btn btn-primary'] : nav-link, btn, btn-primary가 포함된 a태그
+    checkoutPage.getCheckoutButton().click()
 
     # Checkout 페이지 이동
-    self.driver.find_element(By.CSS_SELECTOR, "button[class*='btn btn-success']").click()
+    checkoutPage.getCheckoutButtonSuccess().click()
 
     # Country 입력
     self.driver.find_element(By.ID, "country").send_keys("ind")
