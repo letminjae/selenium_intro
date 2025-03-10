@@ -6,12 +6,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from page_objects.HomePage import Homepage
 from page_objects.CheckoutPage import CheckoutPage
+from page_objects.ConfirmPage import ConfirmPage
 
 class TestOne(BaseClass):
 
   def test_E2E(self):
     homepage = Homepage(self.driver)
     checkoutPage = CheckoutPage(self.driver)
+    confirmPage = ConfirmPage(self.driver)
 
     homepage.shopItems().click()
 
@@ -38,13 +40,13 @@ class TestOne(BaseClass):
     self.driver.find_element(By.LINK_TEXT, "India").click()
 
     # 약관 동의
-    self.driver.find_element(By.CSS_SELECTOR, "div[class*='checkbox-primary']").click()
+    confirmPage.getConfirmButton().click()
 
     # 구매 완료
-    self.driver.find_element(By.CSS_SELECTOR, "input[type='submit']").click()
+    confirmPage.getSubmitButton().click()
 
     # 완료 박스 확인
-    success_text = self.driver.find_element(By.CLASS_NAME, "alert-success").text
+    success_text = confirmPage.getSuccessText()
     assert "Success!" in success_text
 
 
