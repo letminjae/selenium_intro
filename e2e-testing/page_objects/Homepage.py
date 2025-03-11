@@ -1,7 +1,6 @@
 # 홈페이지 관련 요소 클래스
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
 from page_objects.CheckoutPage import CheckoutPage
 
 class Homepage:
@@ -13,7 +12,7 @@ class Homepage:
   password = (By.ID, "exampleInputPassword1")
   name = (By.CSS_SELECTOR, "input[name='name']")
   checkbox = (By.ID, "exampleCheck1")
-  dropdown = (By.ID, "exampleFormControlSelect1")
+  gender = (By.ID, "exampleFormControlSelect1")
   submit = (By.XPATH, "//input[@type='submit']")
   alertSuccess = (By.CLASS_NAME, "alert-success")
 
@@ -35,8 +34,8 @@ class Homepage:
   def checkCheckbox(self):
     return self.driver.find_element(*Homepage.checkbox)
   
-  def selectDropdown(self):
-    return Select(self.driver.find_element(*Homepage.dropdown))
+  def getGender(self):
+    return self.driver.find_element(*Homepage.gender)
 
   def submitForm(self):
     return self.driver.find_element(*Homepage.submit)
