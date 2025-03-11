@@ -11,5 +11,22 @@ import time
 class TestHome(BaseClass):
 
     def test_formSubmissin(self):
-        # basics/locator.py에 있는 코드 가져오기
+        # basics/locator.py에 있는 코드 가져와서 리팩토링
         homepage = Homepage(self.driver)
+
+        homepage.enterEmail().send_keys("hello@hello.com")
+        homepage.enterPassword().send_keys("123456")
+
+        homepage.enterName().send_keys("hello") 
+        homepage.checkCheckbox().click()
+
+        # 드롭다운 - Select를 사용한다
+        dropdown = homepage.selectDropdown()
+        dropdown.select_by_visible_text("Female") # Female 선택 후
+        time.sleep(1)
+        dropdown.select_by_index(0) # Mail 선택
+
+        # Submit
+        homepage.submitForm().click()
+        message = homepage.getAlertSuccessMessage()
+        print(message)
