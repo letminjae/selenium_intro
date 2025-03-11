@@ -1,9 +1,6 @@
 # pytest 표준에 맞춰, 셀레니움 코드 작성
 import pytest
 from utilities.base_class import BaseClass
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions
 from page_objects.HomePage import Homepage
 
 class TestOne(BaseClass):
@@ -32,8 +29,7 @@ class TestOne(BaseClass):
 
     # Country 입력
     confirmPage.findCountries()
-    wait = WebDriverWait(self.driver, 10)
-    wait.until(expected_conditions.presence_of_element_located((By.LINK_TEXT, "India")))
+    self.verifyLinkPresence("India")
     confirmPage.getIndiaOption().click()
 
     # 약관 동의
