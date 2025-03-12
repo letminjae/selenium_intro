@@ -6,10 +6,12 @@ from page_objects.HomePage import Homepage
 class TestOne(BaseClass):
 
   def test_E2E(self):
+    log = self.getLogger()
     homepage = Homepage(self.driver)
 
     # shopItems 에서 checkout page 리턴됨
     checkoutPage = homepage.shopItems()
+    log.info("Checkout page")
 
     # 블랙베리 카드 찾아 장바구니에 추가
     cards = checkoutPage.getCardTitles()
@@ -17,6 +19,7 @@ class TestOne(BaseClass):
     for card in cards:
       i = i + 1
       card_name = card.text
+      log.info(f"Card name: {card_name}")
       if card_name == "Blackberry":
         checkoutPage.getCardFooter()[i].click()
         break
@@ -40,6 +43,7 @@ class TestOne(BaseClass):
 
     # 완료 박스 확인
     success_text = confirmPage.getSuccessText()
+    log.info(success_text)
     assert "Success!" in success_text
 
 
