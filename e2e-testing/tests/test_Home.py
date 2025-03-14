@@ -10,10 +10,10 @@ class TestHome(BaseClass):
         # basics/locator.py에 있는 코드 가져와서 리팩토링
         homepage = Homepage(self.driver)
 
-        homepage.enterEmail().send_keys(getData["email"])
-        homepage.enterPassword().send_keys(getData["password"])
+        homepage.enterEmail().send_keys(getData["Email"])
+        homepage.enterPassword().send_keys(getData["Password"])
 
-        homepage.enterName().send_keys(getData["name"])
+        homepage.enterName().send_keys(getData["Name"])
         homepage.checkCheckbox().click()
 
         # 드롭다운 - BaseClass에 저장
@@ -28,6 +28,6 @@ class TestHome(BaseClass):
         self.driver.refresh()
 
     # 각각의 튜플이 하나의 테스트케이스가 된다.
-    @pytest.fixture(params=HomePageData.test_homepage_data)
+    @pytest.fixture(params=HomePageData.getTestData("Testcase2"))
     def getData(self, request):
         return request.param
