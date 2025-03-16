@@ -46,9 +46,9 @@
 
 ## 📚 학습 내용  
 - Selenium 기본 사용법 (웹 드라이버 실행, 요소 찾기, 상호작용)  
-- Web Scraping 및 자동화  
-- UI 테스트 및 Assertions 활용  
-- 실행 속도 최적화 및 예외 처리  
+- Pytest + Selenium 을 사용한 파이썬 자동화 테스트 구현  
+- Jenkins로 코드 변경 또는 특정 시간 시 테스트 수행될 수 있도록 CI 설정
+- openpyxl로 Testcase 엑셀 데이터 존재 시 fetching하여 자동화 테스트 수행
 
 ## 📌 참고 자료  
 - [Selenium 공식 문서](https://www.selenium.dev/documentation/)  
