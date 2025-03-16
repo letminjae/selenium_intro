@@ -4,8 +4,8 @@
 
 ## 📌 목적  
 - Selenium을 활용한 웹 자동화 및 UI 테스트 학습  
-- 주요 기능 및 API 사용법 정리  
-- 실습 코드 및 예제 공유  
+- Selenium과 같이 사용되는 pytest, jenkins, openpyxl 학습
+- E2E 테스트 실습 코드 및 예제 공유  
 
 ## 🛠️ 환경  
 - Python 3.13
